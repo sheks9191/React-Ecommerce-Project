@@ -9,7 +9,7 @@ class CategoryItems extends Component {
     
     return (
       <ProductCard>
-        <ProductElement state={{product}} to={`/product/${product.id}`}>
+        <ProductElement to={`/product/${product.id}`} state={{ product }}>
           <ProductImg url={product.gallery[0]} Stock={product.inStock}>
             {!product.inStock && (
               <NotInStock>
@@ -25,15 +25,14 @@ class CategoryItems extends Component {
               </span>
             </ProductTitle>
             <ProductPrice>
-              {product.prices.map((price, index) => {
-                if (price.currency.label === currency.label) {
-                  return (
+              {product.prices.map(
+                (price, index) =>
+                  price.currency.label === currency.label && (
                     <span key={index}>
                       {price.currency.symbol} {price.amount}
                     </span>
-                  );
-                }
-              })}
+                  )
+              )}
             </ProductPrice>
           </ProductContent>
         </ProductElement>

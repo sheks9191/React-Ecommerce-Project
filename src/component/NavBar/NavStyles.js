@@ -2,7 +2,7 @@ import styled from "styled-components";
 import {NavLink as Link} from 'react-router-dom'
 
 export const NavContainer = styled.nav`
-  position:fixed;
+  position:absolute;
   left:0;
   right:0;
   display:flex;
@@ -58,8 +58,9 @@ export const NavActions = styled.div`
 `;
 
 export const CurrencyButton = styled.div`
-width: 38px;
+width: 58px;
 height: 29px;
+cursor:pointer;
 span{
   font-size: 1.7rem;
   margin-right: 8px;

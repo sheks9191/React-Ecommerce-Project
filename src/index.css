@@ -4,6 +4,7 @@
   --textColor: #1d1f22;
   --c-primary:#5ece7b;
   --c-dark:#1D1F22;
+ 
 }
 
 
@@ -23,5 +24,153 @@ img {
   max-width: 100%;
   max-height: 100%;
   
+}
+
+ .actions{
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 32px;
+  width: 140px;
+  height: 43px;
+  background: #ffffff;
+  border: 1px solid #1d1f22;
+}
+
+.actions span {
+   font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    width: 89px;
+    height: 17px;
+    text-transform: uppercase;
+   
+}
+
+.actions:hover,
+.actions:active {
+   color:#fff;
+   border:none;
+   background:var(--c-primary);
+}
+
+ .order {
+   color:#fff;
+     border:none;
+     background:var(--c-primary);
+}
+
+/*---------------------------------------------------------------------------*/
+
+.cartPageTotal {
+  font-style: normal;
+  height:24px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color:var(--textColor);
+}
+
+.cartPageTotal span {
+  font-weight: 500;
+  height:28px;
+  margin-right: 5px;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  text-align: right;
+  color:var(--textColor);
+}
+
+.cartPageProduct {
+  display: flex;
+  margin-bottom: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  border-top: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 1rem 0;
+}
+
+.cartPageProduct .price {
+   font-weight: 700;
+  font-size: 24px;
+  line-height: 18px;
+  margin:1.5rem 0;
+}
+
+.productPage {
+  position: absolute;
+  top:80px;
+  left:0;
+  right:0;
+  padding-top:80px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 8rem;
+  margin-top: 152.39px;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.controlIcon {
+  display: none;
+  background:transparent;
+}
+
+
+/* .spanText {
+  width:42px;
+  height:24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 160%;
+  text-align: center;
+  margin-right: 0.4rem;
+  margin-top:0.3rem;
+  margin-bottom:0.3rem;
+  border: 1px solid var(--c-dark);
+  font-family: "Source Sans Pro", sans-serif;
+  cursor: pointer;
+  display: inline-block;
+} */
+
+.modalContainer {
+  position: relative;
+  top: 4.5rem;
+}
+
+.backdrop {
+ position: fixed;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 20;
+  top: 4.5rem;
+}
+
+.modal {
+   z-index: 50;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 16px;
+  gap: 32px;
+  position: absolute;
+  width: 325px;
+  left: 1043px;
+  top: 4.5rem;
 }
 

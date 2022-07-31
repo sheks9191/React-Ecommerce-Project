@@ -8,7 +8,8 @@ export const CartElement = styled.div`
 `;
 
 export const Span = styled.span`
-  width: 63px;
+  min-width: 63px;
+  padding: 0px 5px;
   height: 45px;
   cursor: pointer;
   display: inline-block;
@@ -23,6 +24,7 @@ export const Span = styled.span`
       return `
     color:#fff;
     background-color:var(--c-dark);
+    border: 3px solid #555;
    
     `;
     }
@@ -152,14 +154,6 @@ export const LeftArrow = styled.img`
   height: 11.24px;
   width: 5.63px;
   transform: translateX(130%);
-  ${({ display }) => {
-  if (display) {
-    return `
-    display:none;
-    background:transparent;
-    `
-  }
-  }}
 `;
 
 export const RightArrow = styled.img`
@@ -204,12 +198,6 @@ export const Right = styled.div`
   top: 248px;
   left: 160px;
   bottom: 16px;
-  ${({ display }) => {
-    if (display) {
-      return `
-    display:none;
-    `;
-    }
-  }}
+
 `;
 

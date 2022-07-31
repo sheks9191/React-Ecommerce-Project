@@ -23,11 +23,11 @@ class ProductAttributes extends Component {
         {
           id: e.target.name,
           value: e.target.value,
-        }
+        },
       ],
 
-      message:' ',
-    })
+      message: " ",
+    });
   }
 
   addItemsToCartHandler = (product) => {
@@ -36,13 +36,14 @@ class ProductAttributes extends Component {
        product,
        selectedAttr,
        qty: 1,
+       id:product.id,
     };
     
     if (Object.keys(product.attributes).length !== Object.keys(selectedAttr).length) {
       this.setState({message:' Please select all required attributes'})
     } else {
       this.props.onAddItemToCart(item);
-      this.props.navigate('/all');
+      
     }
   }
 
@@ -56,6 +57,7 @@ class ProductAttributes extends Component {
      const { brand, name, attributes,prices, inStock, description } = product
    
     return (
+      
       <AttributeContainer>
         <p style={{ padding: "10px", color: "green" }}>{this.state.message}</p>
         <Title>
@@ -69,13 +71,13 @@ class ProductAttributes extends Component {
               <div key={attribute.id}>
                 <Label>{attribute.name} :</Label>
                 <List onChange={this.onChangeHandler}>
-                  {attribute.items.map((item) => (
+                  {attribute.items && attribute.items.map((item) => (
                     <div key={item.id}>
                       <Input
                         type="radio"
                         id={`${attribute.name}_${item.id}`}
                         value={item.value}
-                        name={attribute.name}
+                        name={attribute.id}
                       />
 
                       {attribute.type === "text" ? (
@@ -98,11 +100,11 @@ class ProductAttributes extends Component {
           <Label>PRICE:</Label>
           <Price>
             {prices &&
-              prices.map((price) => {
-                if (price.currency.label === this.props.currency.label) {
-                  return `${price.currency.symbol} ${price.amount}`;
-                }
-              })}
+              prices.map((price) => 
+                price.currency.label === this.props.currency.label &&
+                   `${price.currency.symbol} ${price.amount}`
+                
+              )}
           </Price>
         </ProductPrice>
 

@@ -17,7 +17,7 @@ export const SelectedImg = styled.img`
  width:610px;
  height:511px;
  margin-left: 25.42px;
- object-fit: center;
+ object-fit: contain;
 `
 
 export const AttributeContainer = styled.div`
@@ -68,14 +68,6 @@ export const Price = styled.div`
   font-size: 24px;
   line-height: 18px;
   margin-top:10px;
-
-  ${({cart }) => {
-  if (cart) {
-    return `
-      margin:1.5rem 0;
-    `
-  }
-  }}
 `;
 
 export const Button = styled.button`
@@ -140,7 +132,8 @@ export const List = styled.div`
 
 
 export const SpanText = styled.span`
-  width: 63px;
+  min-width: 63px;
+  padding:0px 5px;
   height: 45px;
   cursor: pointer;
   display: inline-block;
@@ -150,34 +143,7 @@ export const SpanText = styled.span`
   border: 1px solid var(--c-dark);
   font-family: "Source Sans Pro", sans-serif;
 
-  ${({ value }) => {
-    if (value) {
-      return `
-     width:42px;
-     height:24px;
-     font-style: normal;
-     font-weight: 400;
-     font-size: 14px;
-     line-height: 160%;
-     text-align: center;
-     margin-right: 0.4rem;
-     margin-top:0.3rem;
-      margin-bottom:0.3rem;
-      
-     
-    `;
-    }
-  }}
-
-  ${({ selected }) => {
-    if (selected) {
-      return `
-    color:#fff;
-    background-color:var(--c-dark);
-   
-    `;
-    }
-  }}
+ 
 `;
 
 export const SpanColor = styled.span`
@@ -191,8 +157,17 @@ export const SpanColor = styled.span`
 `;
 
 export const InputLabel = styled.label`
-
-
+  span {
+    ${({ selected }) => {
+      if (selected) {
+        return `
+    color:#fff;
+    background-color:var(--c-dark);
+   
+    `;
+      }
+    }}
+  }
 `;
 
 export const Input = styled.input`

@@ -34,12 +34,22 @@ export const FETCH_CATEGORY = (productsName) => gql`
   }
 
 `;
-export const FETCH_CURRENCIES = gql`
+export const FETCH_NAV_DATA = gql`
   query {
+    categories {
+      name
+    }
     currencies {
-        label
-        symbol
+      label
+      symbol
     }
   }
+`;
 
-`
+// export const FETCH_LINK = gql`
+//   query {
+//     categories {
+//       name
+//     }
+//   }
+// `;

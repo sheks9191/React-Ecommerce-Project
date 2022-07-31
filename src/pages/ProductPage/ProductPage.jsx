@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { withParams } from '../../general';
-import { Container } from '../../generalStyles';
 import { connect } from 'react-redux';
 import { uiActions } from '../../redux/UiSlice';
 import ProductImg from '../../component/ProductDetails/ProductImg';
@@ -18,14 +17,15 @@ class ProductPage extends Component {
    render() {
     
      const { location } = this.props;
+    //  console.log(location)
     return (
-      <Container product='true' onClick={() => this.props.onIsCurrencyVisible()}>
+      <div className='productPage' onClick={() => this.props.onIsCurrencyVisible()}>
         <ProductImg
           productImgs={location.state.product.gallery}
           updateSelectedImgs={this.selectedImgHandler}
           selectedImg={this.state.selectedImg} />
         <ProductAttributes product={location.state.product} />
-      </Container>
+      </div>
     )
   }
 }

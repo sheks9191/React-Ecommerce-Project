@@ -8,11 +8,12 @@ export const ModalContainer = styled.div`
   background: rgba(0, 0, 0, 0.5);
   z-index: 20;
   top: 4.5rem;
+  cursor:pointer;
  
 `;
 
 export const Modal = styled.div`
-  z-index: 100;
+  z-index: 50;
   background: #fff;
   display: flex;
   flex-direction: column;
@@ -69,17 +70,6 @@ export const Cart = styled.div`
   margin-bottom: 1rem;
   width: 100%;
   justify-content: space-between;
- 
-  ${({ border }) => {
-  if (border) {
-    return `
-    
-     border-top: 1px solid #e5e5e5;
-     border-bottom: 1px solid #e5e5e5;
-     padding: 1rem 0;
-    `;
-  }
-  }}
 `;
 
 export const CartContent = styled.div`
@@ -148,28 +138,6 @@ export const Total = styled.div`
   font-weight: 700;
   font-size: 16px;
   line-height: 18px;
-
-  ${({ cart }) => {
-  if (cart) {
-    return `
-  font-style: normal;
-  height:24px;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  text-align: right;
-  color:var(--textColor);
-
-  span {
-    font-weight: 500;
-     height:28px;
-     margin-right: 5px;
-  }
-    `;
-  }
-  }}
 `;
 
 export const CartButton = styled.div`
@@ -202,14 +170,33 @@ export const Btn = styled.button`
     height: 17px;
     text-transform: uppercase;
   }
+`;
 
-  ${({ order }) => {
-    if (order) {
+export const ModalSpan = styled.span`
+  min-width: 42px;
+  height: 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 0px 5px;
+  line-height: 160%;
+  text-align: center;
+  margin-right: 0.4rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  border: 1px solid var(--c-dark);
+  font-family: "Source Sans Pro", sans-serif;
+  cursor: pointer;
+  display: inline-block;
+
+  ${({ selected }) => {
+    if (selected) {
       return `
-     color:#fff;
-     border:none;
-     background:var(--c-primary);
-  
-      `
-  }}}
+    color:#fff;
+    background-color:var(--c-dark);
+    border: 3px solid #555;
+ 
+    `;
+    }
+  }}
 `;

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
+import { Query } from "react-apollo";
 import { connect } from 'react-redux'
 import { cartActions } from '../../redux/CartSlice'
 import { uiActions } from '../../redux/UiSlice'
-import { Query } from 'react-apollo'
 import { withParams } from '../../general'
 import CategoryItems from '../../component/CategoryItems/CategoryItems'
 import { Container } from '../../generalStyles'
@@ -27,6 +27,7 @@ class CategoryPage extends Component {
         product,
         selectedAttr,
         qty: 1,
+        id: product.id,
       };
 
       this.props.onAddItemsToCart(item);
@@ -35,6 +36,7 @@ class CategoryPage extends Component {
            product,
            selectedAttr,
            qty: 1,
+           id: product.id,
          };
 
          this.props.onAddItemsToCart(item);
@@ -45,28 +47,29 @@ class CategoryPage extends Component {
     const { params } = this.props;
    
     return (
-      <Container onClick={() => this.props.onIsCurrencyVisible()}>
-        <CategoryTitle>{params.products}</CategoryTitle>
-        <CategoryList>
-          <Query query={FETCH_CATEGORY(params.products)}>
-            {({ loading, error, data }) => {
-              if (loading) return <Loading>Loading...</Loading>;
-              if (error) return <Error>Something went wrong...</Error>;
+      
+        <Container onClick={() => this.props.onIsCurrencyVisible()}>
+          <CategoryTitle>{params.products}</CategoryTitle>
+          <CategoryList>
+            <Query query={FETCH_CATEGORY(params.products)}>
+              {({ loading, error, data }) => {
+                if (loading) return <Loading>Loading...</Loading>;
+                if (error) return <Error>Something went wrong...</Error>;
 
-             
-
-          if(!loading && !error) return data.category.products.map((product) => (
-                <CategoryItems
-                  key={product.id}
-                  product={product}
-                  currency={this.props.currency}
-                  addItemsToCartHandler ={this.addItemsToCartHandler}
-                />
-              ))
-            }}
-          </Query>
-        </CategoryList>
-      </Container>
+                if (!loading && !error)
+                  return data.category.products.map((product) => (
+                    <CategoryItems
+                      key={product.id}
+                      product={product}
+                      currency={this.props.currency}
+                      addItemsToCartHandler={this.addItemsToCartHandler}
+                    />
+                  ));
+              }}
+            </Query>
+          </CategoryList>
+        </Container>
+      
     );
   }
 }

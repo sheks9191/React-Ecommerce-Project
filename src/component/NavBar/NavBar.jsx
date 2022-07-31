@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { FETCH_CURRENCIES } from '../../queries/ApolloQueries';
+import { FETCH_NAV_DATA } from '../../queries/ApolloQueries';
 import { currencyActions } from '../../redux/currencySlice';
 import { uiActions } from '../../redux/UiSlice';
 import navLogo from '../../assets/navLogo.svg'
@@ -11,22 +11,27 @@ import { client } from '../../general';
 import ModalItems from '../ModalItems/ModalItems';
 
 
-class NavBar extends Component {
-  
-  state = {
-    currencyData: [],
-  };
 
-  fetchCurrencies = async () => {
+class NavBar extends Component {
+  constructor(props) {
+    super(props);
+    this.nav = React.createRef();
+     this.state = {
+       navData: [],
+     };
+  }
+ 
+
+  fetchNavData = async () => {
     await client
       .query({
-        query: FETCH_CURRENCIES,
+        query: FETCH_NAV_DATA,
       })
-      .then((res) => this.setState({ currencyData: res.data.currencies }));
+      .then((res) => this.setState({ navData: res.data }));
   };
 
   componentDidMount() {
-    this.fetchCurrencies();
+    this.fetchNavData();
   }
 
   updateCurrencyHandler = (currency) => {
@@ -44,39 +49,41 @@ class NavBar extends Component {
     this.props.onIsShowCartVisible();
   };
 
-  navHandler = () => {
-    this.props.onIsCurrencyVisible();
-    this.props.onIsShowCartVisible()
-  }
+  navHandler = (e) => {
+
+    if (e.target === this.nav.current) {
+      this.props.onIsCurrencyVisible();
+      this.props.onIsShowCartVisible();
+    }
+    
+  };
+
   render() {
-   
     const { currencyIsVisible, cartIsVisible } = this.props.ui;
-    const { cartItems, currency } = this.props;
-    const { currencyData } = this.state;
+    const { cartItems, currency , cartQty} = this.props;
+    const {categories, currencies} = this.state.navData;
+    // console.log(categories, currencies)
     return (
       <>
-        <NavContainer>
-          <Navigation onClick={this.navHandler}>
-            <NavLink to="/all">ALL</NavLink>
-            <NavLink to="/clothes">CLOTHES</NavLink>
-            <NavLink to="/tech">TECH</NavLink>
+        <NavContainer ref={this.nav} onClick={this.navHandler}>
+          <Navigation>
+            {categories && categories.map((category, index ) => (
+              
+              <NavLink to={`/${category.name}`} key={index}>{category.name}</NavLink>
+            ))}
           </Navigation>
 
           <NavIcon src={navLogo} alt="nav logo" />
 
           <NavActions>
-            <CurrencyButton>
+            <CurrencyButton onClick={this.toggleCurrencyHandler}>
               <span>{currency.symbol}</span>
-              <ArrowIcon
-                src={downIcon}
-                alt="dowm button"
-                onClick={this.toggleCurrencyHandler}
-              />
+              <ArrowIcon src={downIcon} alt="dowm button" />
             </CurrencyButton>
 
             {currencyIsVisible && (
               <CurrencyDisplay>
-                {currencyData.map((currency, index) => (
+                {currencies.map((currency, index) => (
                   <CurrencyContent
                     key={index}
                     id={currency.label}
@@ -93,7 +100,7 @@ class NavBar extends Component {
               <div onClick={() => this.props.onToggleCart()}>
                 <CartIcon src={cartIcon} alt="cart icon" />
                 {cartItems.length > 0 && (
-                  <CartBadge>{cartItems.length}</CartBadge>
+                  <CartBadge>{cartQty}</CartBadge>
                 )}
               </div>
 
@@ -110,6 +117,7 @@ const mapStateToProps = state => {
   return {
     currency: state.currency,
     cartItems: state.cart.items,
+    cartQty: state.cart.totalQty,
     ui:state.ui
    }
 }

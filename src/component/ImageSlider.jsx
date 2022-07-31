@@ -30,18 +30,23 @@ class ImageSlider extends Component {
     let leftSlider = this.state.index - 1;
     this.setState({ index: this.sliderHandler(leftSlider) });
   };
+
+   
   render() {
+
+    const { gallery } = this.props
+    
     return (
-      <CartImage url={this.props.gallery[this.state.index]}>
+      <CartImage url={gallery[this.state.index]}>
         <Right
           onClick={this.buttonRightHandler}
-          display={this.props.gallery.length === 1}
+          className={gallery.length === 1 && "controlIcon"}
         >
           <RightArrow src={rightArrow} alt="right arrow" />
         </Right>
         <Left
           onClick={this.buttonLeftHandler}
-          display={this.props.gallery.length === 1}
+          className={gallery.length === 1 && "controlIcon"}
         >
           <LeftArrow src={leftArrow} alt="left arrow" />
         </Left>
