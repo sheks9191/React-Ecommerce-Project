@@ -4,13 +4,16 @@ import rightArrow from "../assets/rightArrow.svg";
 import { CartImage, Left, LeftArrow, Right, RightArrow } from '../pages/CartPage/CartPageStyle';
 
 class ImageSlider extends Component {
-  state = {
-    index: 0,
-  };
+  constructor(props) {
+    super(props)
+      this.state = {
+        index: 0,
+      };
+  }
+
 
     sliderHandler = (number) => {
-      
-
+    
     if (number < 0) {
       return this.props.gallery.length - 1;
     }
@@ -35,18 +38,19 @@ class ImageSlider extends Component {
   render() {
 
     const { gallery } = this.props
+    let controlIcon = gallery.length === 1 && "controlIcon"
     
     return (
       <CartImage url={gallery[this.state.index]}>
         <Right
           onClick={this.buttonRightHandler}
-          className={gallery.length === 1 && "controlIcon"}
+          className={controlIcon}
         >
           <RightArrow src={rightArrow} alt="right arrow" />
         </Right>
         <Left
           onClick={this.buttonLeftHandler}
-          className={gallery.length === 1 && "controlIcon"}
+          className={controlIcon}
         >
           <LeftArrow src={leftArrow} alt="left arrow" />
         </Left>

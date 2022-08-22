@@ -23,7 +23,7 @@ export const Modal = styled.div`
   gap: 32px;
   position: absolute;
   width: 325px;
-  left: 1043px;
+  right: 70px;
 `;
 
 export const Text = styled.div`
@@ -194,7 +194,52 @@ export const ModalSpan = styled.span`
       return `
     color:#fff;
     background-color:var(--c-dark);
-    border: 3px solid #555;
+    `;
+    }
+  }}
+`;
+
+
+export const ModalColorSpan = styled.span`
+  min-width: 40px;
+  height: 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  padding: 0px 5px;
+  line-height: 160%;
+  text-align: center;
+  margin-right: 0.4rem;
+  margin-left: 0.3rem;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+  font-family: "Source Sans Pro", sans-serif;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+
+  ${({ color }) => {
+    if (color) {
+      return `
+     background-color: ${color};
+    `;
+    }
+  }}
+
+  ${({ selected }) => {
+    if (selected) {
+      return ` 
+      &:before{
+        content: '';
+        border:2px solid #5ECE7B;
+        position:absolute;
+        background:transparent;
+        left:-4px;
+        right:-4px;
+        top:-4px;
+        bottom:-4px;  
+      }
+       
  
     `;
     }

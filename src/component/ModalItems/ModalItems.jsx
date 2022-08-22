@@ -11,6 +11,7 @@ import {
   CartTotal,
   Content,
   Modal,
+  ModalColorSpan,
   ModalContainer,
   ModalContent,
   ModalSpan,
@@ -55,7 +56,7 @@ class ModalItems extends Component {
 
   checkOutHandler = () => {
     this.props.onIsShowCartVisible();
-    this.props.navigate("/all");
+    this.props.navigate("/category/all");
   };
 
   closeModalHandler = (e) => {
@@ -105,10 +106,7 @@ class ModalItems extends Component {
                                   attribute.items.map((attri, index) =>
                                     attribute.type === "swatch" ? (
                                       <InputLabel key={index}>
-                                        <ModalSpan 
-                                          style={{
-                                            backgroundColor: `${attri.value}`,
-                                          }}
+                                        <ModalColorSpan 
                                           selected={
                                             item.selectedAttr.find(
                                               (selectAttr) =>
@@ -119,7 +117,8 @@ class ModalItems extends Component {
                                                 selectAttr.id === attribute.id
                                             ).value === attri.value
                                           }
-                                        ></ModalSpan>
+                                          color={attri.value}
+                                        ></ModalColorSpan>
                                       </InputLabel>
                                     ) : (
                                       <InputLabel key={index}>

@@ -4,6 +4,7 @@ import CategoryPage from "./pages/CategoryPage/CategoryPage";
 import ProductPage from "./pages/ProductPage/ProductPage";
 import CartPage from "./pages/CartPage/CartPage";
 import NavBar from "./component/NavBar/NavBar";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 class App extends Component {
   render() {
@@ -12,10 +13,11 @@ class App extends Component {
         <Router>
           <NavBar />
           <Routes>
-            <Route exact path="/" element={<Navigate to="/all" />} />
-            <Route path=":products" element={<CategoryPage />} />
-            <Route path="/product/:productId" element={<ProductPage />} />
-            <Route path="cart" element={<CartPage />} />
+            <Route exact path="/" element={<Navigate to="/category/all" />} />
+            <Route exact path="/product/:productId" element={<ProductPage />} />
+            <Route path="/category/:category" element={<CategoryPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="*" element={<ErrorPage />} />
           </Routes>
         </Router>
       </React.Fragment>

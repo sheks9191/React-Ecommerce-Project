@@ -4,7 +4,6 @@ export const ImageList = styled.div`
 width:100%;
 display:flex;
 
-
 `
 
 export const SmallImgs = styled.div`
@@ -157,17 +156,7 @@ export const SpanColor = styled.span`
 `;
 
 export const InputLabel = styled.label`
-  span {
-    ${({ selected }) => {
-      if (selected) {
-        return `
-    color:#fff;
-    background-color:var(--c-dark);
-   
-    `;
-      }
-    }}
-  }
+ 
 `;
 
 export const Input = styled.input`

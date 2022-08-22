@@ -45,13 +45,14 @@ class CategoryPage extends Component {
    
   render() {
     const { params } = this.props;
+  // console.log(params)
    
     return (
       
         <Container onClick={() => this.props.onIsCurrencyVisible()}>
-          <CategoryTitle>{params.products}</CategoryTitle>
+          <CategoryTitle>{params.category}</CategoryTitle>
           <CategoryList>
-            <Query query={FETCH_CATEGORY(params.products)}>
+            <Query query={FETCH_CATEGORY(params.category)}>
               {({ loading, error, data }) => {
                 if (loading) return <Loading>Loading...</Loading>;
                 if (error) return <Error>Something went wrong...</Error>;

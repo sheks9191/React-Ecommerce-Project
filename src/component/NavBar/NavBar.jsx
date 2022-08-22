@@ -69,7 +69,7 @@ class NavBar extends Component {
           <Navigation>
             {categories && categories.map((category, index ) => (
               
-              <NavLink to={`/${category.name}`} key={index}>{category.name}</NavLink>
+              <NavLink to={`/category/${category.name}`} key={index}>{category.name}</NavLink>
             ))}
           </Navigation>
 
@@ -109,6 +109,7 @@ class NavBar extends Component {
           </NavActions>
         </NavContainer>
       </>
+      
     );
   }
 }

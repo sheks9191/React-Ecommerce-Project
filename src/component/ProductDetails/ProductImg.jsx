@@ -5,6 +5,7 @@ class ProductImg extends Component {
   render() {
 
     const { productImgs, updateSelectedImgs, selectedImg } = this.props;
+    // console.log(productImgs,updateSelectedImgs,selectedImg, 123)
     return (
       <ImageList>
         <SmallImgs>

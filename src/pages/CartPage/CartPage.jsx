@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { cartActions } from '../../redux/CartSlice';
 import { uiActions } from "../../redux/UiSlice";
 import { connect } from 'react-redux';
-import { Brand, InputLabel, Label, Name,ProductAttr } from '../../component/ProductDetails/ProductDetailsStyle';
+import { Brand, InputLabel, Name,ProductAttr } from '../../component/ProductDetails/ProductDetailsStyle';
 import { Attributes} from '../../component/ModalItems/ModalStyle';
-import { CartBtn, CartButton, CartElement, CartTitle, CartTotal, OrderButton, Quantity,Span,Tax } from './CartPageStyle';
+import { CartBtn, CartButton, CartElement, CartTitle, CartTotal, OrderButton, Quantity,Span,SpanColor,Tax } from './CartPageStyle';
 import ImageSlider from '../../component/ImageSlider';
 import { Container } from '../../generalStyles';
 import { withParams } from '../../general';
@@ -35,7 +35,7 @@ class CartPage extends Component {
 
   onOrderHandler = () => {
     this.props.onClearItemsFromCart();
-    this.props.navigate("/all")
+    this.props.navigate("/category/all")
   }
 
   render() {
@@ -61,18 +61,15 @@ class CartPage extends Component {
                   <ProductAttr>
                     {item.product.attributes.map((attribute) => (
                       <Attributes key={attribute.id}>
-                        <Label style={{ margin: "10px 0" }}>
+                        <div className='cart-label'>
                           {attribute.name} :
-                        </Label>
+                        </div>
                         <div>
                           {attribute.items &&
                             attribute.items.map((attri, index) =>
                               attribute.type === "swatch" ? (
                                 <InputLabel key={index}>
-                                  <Span
-                                    style={{
-                                      backgroundColor: `${attri.value}`,
-                                    }}
+                                  <SpanColor
                                     selected={
                                       item.selectedAttr.find(
                                         (selectAttr) =>
@@ -81,9 +78,11 @@ class CartPage extends Component {
                                       item.selectedAttr.find(
                                         (selectAttr) =>
                                           selectAttr.id === attribute.id
-                                      ).value === attri.value
+                                      ).value === attri.value  
                                     }
-                                  ></Span>
+
+                                    color = {attri.value}
+                                  ></SpanColor>
                                 </InputLabel>
                               ) : (
                                 <InputLabel key={index}>

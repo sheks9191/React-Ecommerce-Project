@@ -18,13 +18,50 @@ export const Span = styled.span`
   margin-right: 1rem;
   border: 1px solid var(--c-dark);
   font-family: "Source Sans Pro", sans-serif;
-
+  
   ${({ selected }) => {
     if (selected) {
       return `
     color:#fff;
     background-color:var(--c-dark);
-    border: 3px solid #555;
+    `;
+    }
+  }}
+`;
+
+export const SpanColor= styled.span`
+  min-width: 63px;
+  padding: 0px 5px;
+  height: 45px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  line-height: 45px;
+  margin-right: 1rem;
+  font-family: "Source Sans Pro", sans-serif;
+  position:relative;
+
+  ${({ color }) => {
+    if (color) {
+      return `
+      background-color:${color};
+    `;
+    }
+  }}
+
+  ${({ selected }) => {
+    if (selected) {
+      return `
+   &:before{
+        content: '';
+        border:2px solid #5ECE7B;
+        position:absolute;
+        background:transparent;
+        left:-4px;
+        right:-4px;
+        top:-4px;
+        bottom:-4px;  
+      }
    
     `;
     }
@@ -85,14 +122,6 @@ export const CartImage = styled.div`
   background-position: center;
   object-fit: center;
   background-size: contain;
-
-  div:nth-of-type(2) {
-   
-  }
-
-  div:nth-of-type(1) {
-  
-  }
 `;
 
 export const CartTotal = styled.div`
@@ -177,14 +206,6 @@ export const Left = styled.div`
   top: 248px;
   left: 128px;
   bottom: 16px;
-
-  ${({ display }) => {
-    if (display) {
-      return `
-    display:none;
-    `;
-    }
-  }}
 `;
 
 export const Right = styled.div`

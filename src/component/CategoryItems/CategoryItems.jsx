@@ -9,7 +9,7 @@ class CategoryItems extends Component {
     
     return (
       <ProductCard>
-        <ProductElement to={`/product/${product.id}`} state={{ product }}>
+        <ProductElement to={`/product/${product.id}`}>
           <ProductImg url={product.gallery[0]} Stock={product.inStock}>
             {!product.inStock && (
               <NotInStock>

@@ -46,10 +46,33 @@ export const FETCH_NAV_DATA = gql`
   }
 `;
 
-// export const FETCH_LINK = gql`
-//   query {
-//     categories {
-//       name
-//     }
-//   }
-// `;
+export const FETCH_PRODUCT_BY_ID = (productId) => gql`
+query {
+  product(id: "${productId}") {            
+    id
+    brand
+    name
+    inStock
+    gallery
+    description
+    category
+    attributes {
+      id
+      name
+      type
+      items {
+        id
+        value
+        displayValue
+      }      
+    }
+    prices {
+      amount
+      currency {
+        label
+        symbol
+      }
+    }
+  }
+}
+`;

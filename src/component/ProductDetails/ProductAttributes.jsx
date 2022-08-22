@@ -59,7 +59,7 @@ class ProductAttributes extends Component {
     return (
       
       <AttributeContainer>
-        <p style={{ padding: "10px", color: "green" }}>{this.state.message}</p>
+        <p className='notification'>{this.state.message}</p>
         <Title>
           <Brand>{brand}</Brand>
           <Name>{name}</Name>
