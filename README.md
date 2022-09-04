@@ -1,5 +1,5 @@
 Project Details
-![Category Page](src\ReadMeImgs\category-page.png)
+![Category Page](src/ReadMeImgs/category-page.png)
 ![Cloth Page](src\ReadMeImgs\cloth-page.png)
 ![Tech Page](src\ReadMeImgs\tech-page.png)
 ![Product Page](src\ReadMeImgs\product-page.png)
