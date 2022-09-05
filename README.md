@@ -1,12 +1,12 @@
 Project Details
 ![Category Page](src/ReadMeImgs/category-page.png)
-![Cloth Page](src\ReadMeImgs\cloth-page.png)
-![Tech Page](src\ReadMeImgs\tech-page.png)
-![Product Page](src\ReadMeImgs\product-page.png)
-![Currency Switcher](src\ReadMeImgs\currency-switcher.png)
-![Cart Overlay](src\ReadMeImgs\cart-overlay.png)
-![Cart Page](src\ReadMeImgs\cart-page.png)
-![Cart Total](src\ReadMeImgs\cart-total.png)
+![Cloth Page](src/ReadMeImgs/cloth-page.png)
+![Tech Page](src/ReadMeImgs/tech-page.png)
+![Product Page](src/ReadMeImgs/product-page.png)
+![Currency Switcher](src/ReadMeImgs/currency-switcher.png)
+![Cart Overlay](src/ReadMeImgs/cart-overlay.png)
+![Cart Page](src/ReadMeImgs/cart-page.png)
+![Cart Total](src/ReadMeImgs/cart-total.png)
 
 
 <!-- # Getting Started with Create React App
