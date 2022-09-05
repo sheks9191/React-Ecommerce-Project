@@ -1,11 +1,29 @@
 Project Details
+
+GRAPQL ENDPOINT link[Grapql Endpoint](https://github.com/scandiweb/junior-react-endpoint)
+
+Category Page
 ![Category Page](src/ReadMeImgs/category-page.png)
+
+Cloth Page
 ![Cloth Page](src/ReadMeImgs/cloth-page.png)
+
+Tech Page
 ![Tech Page](src/ReadMeImgs/tech-page.png)
+
+Product Page
 ![Product Page](src/ReadMeImgs/product-page.png)
+
+Currency Switcher
 ![Currency Switcher](src/ReadMeImgs/currency-switcher.png)
+
+Cart Overlay
 ![Cart Overlay](src/ReadMeImgs/cart-overlay.png)
+
+Cart Page
 ![Cart Page](src/ReadMeImgs/cart-page.png)
+
+Cart Total
 ![Cart Total](src/ReadMeImgs/cart-total.png)
 
 
